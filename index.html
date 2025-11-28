@@ -33,14 +33,175 @@
 
   .glow-mushroom{width:24px;height:36px;background:#ff99cc;border-radius:50%;position:absolute;box-shadow:0 0 12px #ff99cc}
 
-  /* Cake Slide */
-  #slide3 .cake{width:200px;height:120px;background:linear-gradient(180deg,#fff1e0,#ffccaa);border-radius:12px;position:relative;box-shadow:0 0 24px #ffb36b;cursor:pointer}
-  .slice{position:absolute;width:60px;height:60px;background:#ff9988;top:0;right:0;border-radius:0 12px 0 0;box-shadow:0 0 16px #ff9988;transform-origin:bottom left;transition:transform 0.5s}
-  .slice.reveal{transform:rotate(120deg) translate(20px,-20px)}
+  <div class="slide" id="cakeSlide">
+  <h2>Cake Surprise 🎂</h2>
 
-  .birthday-msg{margin-top:24px;font-size:1rem;color:#ffe0b2;display:none;animation:fadeIn 1s forwards}
-  @keyframes fadeIn{from{opacity:0} to{opacity:1}}
+  <div class="cake-container" onclick="cutCake()">
+      <div class="sparkle sparkle1"></div>
+      <div class="sparkle sparkle2"></div>
+      <div class="sparkle sparkle3"></div>
 
+      <div id="cakeWhole" class="cake">
+        <div class="layer layer1"></div>
+        <div class="layer layer2"></div>
+        <div class="layer layer3"></div>
+        <div class="frosting"></div>
+        <div class="candle"></div>
+        <div class="flame"></div>
+      </div>
+
+      <div id="cakeSlice" class="cake-slice">
+        <div class="slice-layer1"></div>
+        <div class="slice-layer2"></div>
+        <div class="slice-layer3"></div>
+        <div class="slice-frosting"></div>
+      </div>
+  </div>
+
+  <div id="cakeMessage" class="cake-message">Make a wish, Kisstea ✨</div>
+
+  <button class="next-btn" onclick="nextSlide()">Next</button>
+</div>
+  /* Cake container */
+.cake-container {
+  width: 220px;
+  margin: 20px auto;
+  position: relative;
+  cursor: pointer;
+}
+
+/* Wobble animation */
+.cake {
+  width: 100%;
+  height: 160px;
+  position: relative;
+  animation: wobble 3s infinite ease-in-out;
+}
+
+@keyframes wobble {
+  0%,100% { transform: rotate(0deg); }
+  50% { transform: rotate(1.5deg); }
+}
+
+/* Cake layers */
+.layer {
+  width: 100%;
+  height: 40px;
+  border-radius: 8px;
+}
+
+.layer1 { background: #7a3e2d; }
+.layer2 { background: #9b4f37; }
+.layer3 { background: #7a3e2d; }
+
+/* Frosting */
+.frosting {
+  width: 100%;
+  height: 25px;
+  background: #ffe9f7;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(255, 200, 230, 0.7);
+}
+
+/* Candle */
+.candle {
+  width: 10px;
+  height: 35px;
+  background: #ff9ac5;
+  border-radius: 5px;
+  position: absolute;
+  top: -40px;
+  left: calc(50% - 5px);
+}
+
+/* Flame */
+.flame {
+  width: 12px;
+  height: 18px;
+  background: radial-gradient(circle, #fff6a9, #ffb300);
+  border-radius: 50%;
+  position: absolute;
+  top: -58px;
+  left: calc(50% - 6px);
+  animation: flicker 0.2s infinite alternate ease-in-out;
+}
+
+@keyframes flicker {
+  from { transform: scale(1); opacity: 1; }
+  to { transform: scale(0.8); opacity: 0.7; }
+}
+
+/* Cake slice */
+.cake-slice {
+  width: 100px;
+  height: 80px;
+  position: absolute;
+  top: 50px;
+  left: 60px;
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: 1s ease;
+}
+
+.cake-slice.reveal {
+  opacity: 1;
+  transform: translateX(60px);
+}
+
+.slice-layer1, .slice-layer2, .slice-layer3 {
+  width: 100%;
+  height: 20px;
+  border-radius: 5px;
+}
+
+.slice-layer1 { background: #7a3e2d; }
+.slice-layer2 { background: #9b4f37; }
+.slice-layer3 { background: #7a3e2d; }
+
+.slice-frosting {
+  width: 100%;
+  height: 15px;
+  background: #ffe9f7;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(255,200,230,0.6);
+}
+
+/* Sparkles */
+.sparkle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: white;
+  border-radius: 50%;
+  animation: sparkleFloat 4s infinite ease-in-out;
+}
+
+@keyframes sparkleFloat {
+  0% { transform: translateY(0) scale(1); opacity: 1; }
+  50% { transform: translateY(-20px) scale(1.4); opacity: 0.6; }
+  100% { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+.sparkle1 { left: -10px; top: 20px; animation-delay: 0s; }
+.sparkle2 { right: -10px; top: 50px; animation-delay: 1s; }
+.sparkle3 { left: 50px; top: -10px; animation-delay: 2s; }
+
+/* Message reveal */
+.cake-message {
+  opacity: 0;
+  margin-top: 15px;
+  font-size: 20px;
+  transition: 1s ease;
+}
+
+.cake-message.show {
+  opacity: 1;
+}
+  function cutCake() {
+  document.getElementById("cakeSlice").classList.add("reveal");
+  document.getElementById("cakeMessage").classList.add("show");
+  }
+  
   /* Memory Box Slide */
   #slide4{flex-direction:column;background:#121518}
   .memory-box{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:24px}
