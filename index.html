@@ -69,6 +69,71 @@
     #slide5 img{width:160px}
   }
 </style>
+  /* Cute Animated Cake for Slide 4 */
+.cake2-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  animation: fadeIn 1s ease-out;
+}
+
+.cake2 {
+  width: 120px;
+  height: 80px;
+  background: #ffb6c1;
+  border-radius: 10px;
+  position: relative;
+  box-shadow: 0 4px 8px rgba(0,0,0,.4);
+}
+
+.cake2::before {
+  content: "";
+  position: absolute;
+  width: 120px;
+  height: 20px;
+  background: #ff8fab;
+  border-radius: 10px 10px 0 0;
+  top: -20px;
+}
+
+.candle2 {
+  width: 12px;
+  height: 40px;
+  background: #f5f5f5;
+  position: absolute;
+  top: -60px;
+  left: 54px;
+  border-radius: 4px;
+  box-shadow: 0 0 6px rgba(255,255,255,0.8);
+}
+
+.flame2 {
+  width: 16px;
+  height: 16px;
+  background: radial-gradient(circle,#ffd700 40%,#ff8c00 80%);
+  border-radius: 50%;
+  position: absolute;
+  top: -14px;
+  left: -2px;
+  animation: flicker2 0.25s infinite alternate;
+  filter: drop-shadow(0 0 8px #ffdd55);
+}
+
+@keyframes flicker2 {
+  from { transform: scale(1); opacity: 1; }
+  to   { transform: scale(1.25); opacity: 0.85; }
+}
+
+.cake2-text {
+  font-size: 18px;
+  font-weight: 600;
+  margin-top: 10px;
+  color: #ffdfef;
+  text-shadow: 0 0 8px rgba(255,200,230,0.4);
+  letter-spacing: 1px;
+}
 </head>
 <body>
 
@@ -109,6 +174,15 @@
 <!-- Slide 4: Memory Box -->
 <div class="slide" id="slide4">
   <h2>Memory Box</h2>
+  <div class="cake2-container">
+  <div class="cake2">
+    <div class="candle2">
+      <div class="flame2"></div>
+    </div>
+  </div>
+  <p class="cake2-text">A little cake before the memories 🍰✨</p>
+</div>
+
   <div class="memory-box">
     <div class="polaroid"><img src="memory1.jpg"><div class="caption">my</div></div>
     <div class="polaroid"><img src="memory2.jpg"><div class="caption">fav</div></div>
